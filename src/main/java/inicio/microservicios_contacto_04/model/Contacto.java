@@ -9,13 +9,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
-@Entity//indica que esta clase es una entidad
+@Entity//indica que esta clase es una entidad, y que esta clase representa una tabla en la base de datos
 @Table(name= "contactos")//con esta anotacion hago referencia a la tabla que voy a manejar en la base de datos
-@NamedQuery(name="contacto.findAll", query = "SELECT c FROM Contacto c" ) //pra este ejemplo no es tan necesaria pero se deja ahi, se utiliza como comunicacion con la base de datos
+@NamedQuery(name="contacto.findAll", query = "SELECT c FROM Contacto c" ) //pra este ejemplo no es 
+//tan necesaria pero se deja ahi, se utiliza como comunicacion con la base de datos, lo que dice 
+//tambien es que cuando se llame al metodo findAll de la clase Contacto, ejecutara el SQL que hay ahi...
+
+
 public class Contacto implements Serializable {
 
     @Id//Se usa para marcar el campo que representa la clave primaria de la entidad.
-    @GeneratedValue( strategy= GenerationType.IDENTITY )// este lo utilizo porque da a entender que la primary key esta en una constante de crecimiento
+    @GeneratedValue( strategy= GenerationType.IDENTITY )// este lo utilizo porque da a entender que la primary key esta en una constante de crecimiento (un consecutivo)
     private int idContacto;
     private int edad;
     private String email;

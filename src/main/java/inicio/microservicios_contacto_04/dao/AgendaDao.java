@@ -21,5 +21,5 @@ void eliminarContacto(String email);
 List<Contacto> devolverContactos();
 void eliminarContacto (int idContacto);
 Contacto recuperarContacto(int idContacto);
-Contacto actualizarContacto(Contacto contacto);
+void actualizarContacto(Contacto contacto);
 }
