@@ -18,18 +18,20 @@ import inicio.microservicios_contacto_04.model.Contacto;
 public class AgendaServiceImpl implements AgendaService {
 
     /*
-     *como vamos a utilizar los objetos de la clase AgendaDao dentro de la capa de servicios para 
-     *llamar a los metodos para que hagan las operaciones sobre la capa de persistencia, hay que inyectar 
-     *una implementacion de AgendaDao
-     *- declaramo la variable del tio de la interfaz en este caso es AgendaDao
+     * como vamos a utilizar los objetos de la clase AgendaDao dentro de la capa de
+     * servicios para
+     * llamar a los metodos para que hagan las operaciones sobre la capa de
+     * persistencia, hay que inyectar
+     * una implementacion de AgendaDao
+     * - declaramo la variable del tio de la interfaz en este caso es AgendaDao
      */
     @Autowired
     AgendaDao dao;
 
     @Override
     public Boolean agregarContacto(Contacto contacto) {
-    
-        if (dao.recuperarContacto(contacto.getIdContacto())==null) {
+
+        if (dao.recuperarContacto(contacto.getIdContacto()) == null) {
             dao.agregarContacto(contacto);
             return true;
         }
@@ -38,19 +40,19 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     public List<Contacto> recuperarContactos() {
-        return dao.devolverContactos();  
+        return dao.devolverContactos();
     }
 
     @Override
     public void actualizarContacto(Contacto contacto) {
-        if (dao.recuperarContacto(contacto.getIdContacto())!=null) {
+        if (dao.recuperarContacto(contacto.getIdContacto()) != null) {
             dao.actualizarContacto(contacto);
         }
     }
 
     @Override
     public Boolean eliminarContacto(int idContacto) {
-        if (dao.recuperarContacto(idContacto)!=null) {
+        if (dao.recuperarContacto(idContacto) != null) {
             dao.eliminarContacto(idContacto);
             return true;
         }

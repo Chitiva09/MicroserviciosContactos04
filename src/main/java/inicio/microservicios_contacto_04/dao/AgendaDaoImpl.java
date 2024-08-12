@@ -8,17 +8,19 @@ import org.springframework.stereotype.Repository;
 import inicio.microservicios_contacto_04.model.Contacto;
 
 @Repository
-public class AgendaDaoImpl implements AgendaDao{
+public class AgendaDaoImpl implements AgendaDao {
 
     @Autowired
     /*
-     * es parte del framework Spring y se usa para la inyección de dependencias. Esto significa que
-     *  Spring se encargará de proporcionar una instancia de la clase necesaria 
+     * es parte del framework Spring y se usa para la inyección de dependencias.
+     * Esto significa que
+     * Spring se encargará de proporcionar una instancia de la clase necesaria
      * (en este caso, AgendaJpaSpring) al campo o al constructor anotado.
      */
     AgendaJpaSpring agenda;
 
     @Override
+
     public void agregarContacto(Contacto contacto) {
         agenda.save(contacto);
     }
