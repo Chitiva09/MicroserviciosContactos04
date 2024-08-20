@@ -27,7 +27,7 @@ Boolean eliminarContacto( int idContacto);
  * elimina contacto con el idContacto, con el boolean nos da falso si no se ha podido eliminar
  *  el contacto y verdadero cuando se ha podido eliminar el contacto con exito
  */
-Contacto buacarContacto(int idContacto);
+Contacto buscarContacto(int idContacto);
 /*
  * busca contactos por la idContacto, retorna Contacto, porque al buscar por idContacto traera el 
  * objeto contacto con todas sus propiedades 

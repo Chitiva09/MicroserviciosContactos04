@@ -49,6 +49,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<properties>
+  			<maven.compiler.source>21</maven.compiler.source>
+  			<maven.compiler.target>21</maven.compiler.target>
+		</properties>
+
 		<dependency><!--esta dependencia es para la configuracion del jpa para conectarme a la base de datos mysql -->
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-core</artifactId>

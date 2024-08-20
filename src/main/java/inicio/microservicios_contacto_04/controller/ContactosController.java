@@ -28,15 +28,29 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class ContactosController {
     @Autowired
     AgendaService service;
-
+    /*
+     * recuperar contactos es para mostar todos los contactos que hay en la base de datos
+     * //!la clase es tipo list porque va a retornar toda la lista de contactos para poder mostrarla
+     * lo que retorna se guarda en la variable service 
+     */
     @GetMapping(value = "contactos", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Contacto> recuperarContactos(){
         return service.recuperarContactos();
     }
-
+    /*
+     * en esta solicitud http vamos a mostrar el contacto que se indique con el id
+     * el produces = MediaType.APPLICATION_JSON_VALUE indica que voy a retornar un dato tipo json
+     * //!este metodo retorna un tipo Contacto porque va a retornar uno solo, en formato Contacto.
+     * se utiliza patch variable para mapear una variable en  el url en este aso seria una variable
+     * tipo int llamada id que se encontrara en el patron de la url como id
+     * //?retornará en la variable service un cuerpo json cuando se encuentre el contacto por el id
+     * //?que se ha especificado y se debe colocar parametro que sera la variable.
+     * .buscarContacto se utiliza porque este ya tiene una programacion previa en service donde 
+     * especifica que hace el metodo buscarContacto.
+     */
     @GetMapping(value = "contactos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Contacto recuperarContacto (@PathVariable ("id")int id){
-        return service.buacarContacto(id);
+        return service.buscarContacto(id);
     }
 
     @PostMapping(value = "contactos", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,7 +59,7 @@ public class ContactosController {
     }
 
     @PutMapping(value = "contactos",consumes =  MediaType.APPLICATION_JSON_VALUE)
-    public String actualizarContacto (@RequestBody Contacto contacto){
+    public void actualizarContacto(@RequestBody Contacto contacto){
         service.actualizarContacto(contacto);
     }
 

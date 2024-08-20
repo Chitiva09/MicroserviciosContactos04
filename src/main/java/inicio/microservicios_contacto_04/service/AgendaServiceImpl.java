@@ -60,7 +60,7 @@ public class AgendaServiceImpl implements AgendaService {
     }
 
     @Override
-    public Contacto buacarContacto(int idContacto) {
+    public Contacto buscarContacto(int idContacto) {
         return dao.recuperarContacto(idContacto);
     }
 
