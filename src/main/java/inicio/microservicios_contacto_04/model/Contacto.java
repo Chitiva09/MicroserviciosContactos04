@@ -24,10 +24,25 @@ public class Contacto implements Serializable {
     private int edad;
     private String email;
     private String nombre;
+    /*
+     * Necesidad para JPA/Hibernate: En Java, los frameworks de persistencia como JPA (Java
+     * Persistence API) o Hibernate requieren un constructor vacío o sin parámetros para poder
+     * instanciar objetos de la clase cuando están recuperando datos de la base de datos. Esto se 
+     * debe a que estos frameworks suelen utilizar técnicas de reflexión para crear instancias de 
+     * entidades antes de poblar sus campos con los datos recuperados.
+     * 
+     * Flexibilidad: Tener un constructor vacío permite que otros desarrolladores o partes del 
+     * código puedan crear una instancia de la clase sin necesidad de proporcionar todos los 
+     * atributos al momento de la creación. Esto es útil en situaciones donde los datos se 
+     * establecerán más adelante a través de los métodos set.
 
+     *Compatibilidad con JavaBeans: La convención de los JavaBeans en Java requiere que haya un 
+     *constructor sin argumentos para que las herramientas y frameworks puedan trabajar con la 
+     *clase sin problemas. Esto es importante en aplicaciones que utilizan tecnologías que dependen 
+     *de la introspección de las clases (como JSP, JSF, o Spring).
+     */
     public Contacto(){
 
-    
     }
 
     public int getIdContacto() {

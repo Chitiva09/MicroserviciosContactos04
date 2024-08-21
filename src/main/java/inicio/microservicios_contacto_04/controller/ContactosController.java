@@ -52,7 +52,17 @@ public class ContactosController {
     public Contacto recuperarContacto (@PathVariable ("id")int id){
         return service.buscarContacto(id);
     }
-
+    /*
+     *se utiliza postMapping porque el post sirve para crear nuevos recursos en la base de datos.
+     *el consumes se utliza para especfiar el tipo de dato que se resivira en este caso sera json 
+     *y el produces para especificar que voy a retornar un dato tpo json
+     * //! es un metodo que retorna un string  porque recibe un cuerpo de datos tipo json los cuales
+     * //! son cadenas o sea String.
+     * se usa "@RequestBody" porque sirve para recibir en el cuerpo de una url un dato json (en vez de 
+     * solo recibir una variable recibe un cuerpo completo de datos que en este caso se organiza segun 
+     * el metodo )
+     * 
+    */
     @PostMapping(value = "contactos", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String guardarContacto (@RequestBody Contacto contacto){
         return String.valueOf(service.agregarContacto(contacto));
