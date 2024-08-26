@@ -23,7 +23,18 @@ import org.springframework.web.bind.annotation.PutMapping;
  * 4. actualizar contacto
  * 5. eliminar por id 
  */
+/*
+ * @RestController:
 
+ *Uso: Indica que la clase es un controlador RESTful. Combina @Controller y @ResponseBody, lo que 
+ *significa que los métodos de la clase devolverán directamente los datos en formato JSON o XML, en 
+ *lugar de una vista.
+
+ *Ejemplo: Una clase que maneja solicitudes HTTP y devuelve respuestas JSON para un API.
+
+ *Ventajas: Facilita la creación de APIs RESTful y reduce la necesidad de escribir código adicional 
+ *para convertir respuestas a JSON.
+ */
 @RestController
 public class ContactosController {
     @Autowired
@@ -33,7 +44,7 @@ public class ContactosController {
      * //!la clase es tipo list porque va a retornar toda la lista de contactos para poder mostrarla
      * lo que retorna se guarda en la variable service 
      */
-    @GetMapping(value = "contactos", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/contactos", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Contacto> recuperarContactos(){
         return service.recuperarContactos();
     }
@@ -48,7 +59,7 @@ public class ContactosController {
      * .buscarContacto se utiliza porque este ya tiene una programacion previa en service donde 
      * especifica que hace el metodo buscarContacto.
      */
-    @GetMapping(value = "contactos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/contactos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Contacto recuperarContacto (@PathVariable ("id")int id){
         return service.buscarContacto(id);
     }
@@ -67,7 +78,7 @@ public class ContactosController {
      * //?String con la opcion valueOf y esta como parametro contacto porque es el objeto que se va
      * //?a guardar
     */
-    @PostMapping(value = "contactos", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/contactos", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     public String guardarContacto (@RequestBody Contacto contacto){
         return String.valueOf(service.agregarContacto(contacto));
     }
@@ -75,12 +86,12 @@ public class ContactosController {
      * se utiliza PUT porque es la solicitud http que nos permite modificar o reemplazar un
      * recuro existente en la base de datos. 
      */
-    @PutMapping(value = "contactos",consumes =  MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/contactos",consumes =  MediaType.APPLICATION_JSON_VALUE)
     public void actualizarContacto(@RequestBody Contacto contacto){
         service.actualizarContacto(contacto);
     }
 
-    @DeleteMapping(value = "contactos/{id}")
+    @DeleteMapping(value = "/contactos/{id}")
     public void eliminarPorId (@PathVariable ("id")int idContacto){
         service.eliminarContacto(idContacto);
     }

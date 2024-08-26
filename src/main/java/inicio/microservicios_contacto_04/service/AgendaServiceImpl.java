@@ -13,6 +13,17 @@ import inicio.microservicios_contacto_04.model.Contacto;
  * que seran los controladores se utiliza la anotacion @Service
  * -@Service es mas adecuada para una clase que contiene la logica de nogocio o logica como tal
  *  del microservicio
+
+ * @Service:
+
+ *Uso: Indica que la clase es un servicio. Se usa principalmente para las clases que contienen 
+ *lógica de negocio. Spring gestiona estas clases como beans en el contenedor de Spring.
+
+ *Ejemplo: Una clase que realiza cálculos, maneja transacciones o contiene la lógica principal de 
+ *la aplicación.
+
+ *Ventajas: Permite que Spring gestione transacciones y aspectos relacionados con la lógica de 
+ *negocio.
  */
 @Service
 public class AgendaServiceImpl implements AgendaService {
